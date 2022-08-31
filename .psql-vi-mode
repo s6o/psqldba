@@ -1,0 +1,3 @@
+# set vi editing mode for psql
+# this is to be included from .inputrc
+set editing-mode vi

@@ -1,0 +1,18 @@
+\set QUIET 1
+\pset null '¤'
+
+\pset format aligned
+
+\set PROMPT1 '%001%[%033[1;31m%]%002%M%001%[%033[0m%]%002:%>\n  %n@%001%[%033[1;35m%]%002%/%001%[%033[0m%]%002%R%#%x '
+\set PROMPT2 '  %n@%/%R %# '
+
+\timing
+
+\x auto
+
+\set VERBOSITY verbose
+\set HISTFILE ~/psql-cfg/history/.psql_history- :DBNAME
+\set HISTCONTROL ignoredups
+\set COMP_KEYWORD_CASE upper
+
+\unset QUIET

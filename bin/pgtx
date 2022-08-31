@@ -1,0 +1,93 @@
+#!/bin/sh
+#
+function usage_help() {
+  cat << USAGEEND
+
+Help
+
+  Execute SQL statements in a single transaction via psql expected to be in PATH.
+  All statements either successfully pass or all changes are rejected.
+
+  Usage:
+    pgtx {db-name} {sql-script} [--commit]
+
+  By default all statements are executed as a --dry-run, unless the --commit
+  switch is explicitly applied.
+
+  The Postgres' PGHOST, PGPORT and PGUSER environment variables are
+  allowed to override the defaults values when set:
+    host = localhost
+    port = 5432
+    user = postgres
+
+USAGEEND
+}
+
+###############################################################################
+
+if [[ "${#}" -ne 2 && "${#}" -ne 3 ]]; then
+  usage_help
+  exit 1
+fi
+
+###############################################################################
+
+TX_DB="${1}"
+TX_SCRIPT="${2}"
+TX_DRY_RUN="${3}"
+TX_HOST="${PGHOST:-localhost}"
+TX_PORT="${PGPORT:-5432}"
+TX_USER="${PGUSER:-postgres}"
+
+###############################################################################
+
+db_arg="`psql -U ${TX_USER} -h ${TX_HOST} -p ${TX_PORT} -X -c "\l" | grep ${TX_DB} | cut -d '|' -f 1 | tr -d ' ' | tr -d '\n'`"
+if [[ "${db_arg}" != "${TX_DB}" ]]; then
+  echo
+  echo "Error: Specified database: ${TX_DB} not found on ${TX_HOST}:${TX_PORT} for user ${TX_USER}"
+  exit 70
+fi
+
+if [[ ! -f "${TX_SCRIPT}" ]]; then
+  echo
+  echo "Error: Specified sql-script: ${TX_SCRIPT} file not found"
+  exit 71
+fi
+
+###############################################################################
+
+transaction_file="${HOME}/psql-cfg/history/.pgtx"
+
+echo "BEGIN;" > "${transaction_file}"
+echo "\i ${TX_SCRIPT}" >> "${transaction_file}"
+
+if [ "${TX_DRY_RUN}" == "--commit" ]; then
+  echo "COMMIT;" >> "${transaction_file}"
+else
+  echo
+  echo "This is a --dry-run"
+  echo
+  echo "ROLLBACK;" >> "${transaction_file}"
+fi
+
+psql \
+  -U ${TX_USER} \
+  -h ${TX_HOST} \
+  -p ${TX_PORT} \
+  -f ${transaction_file} \
+  --no-psqlrc \
+  --echo-all \
+  --set AUTOCOMMIT=off \
+  --set ON_ERROR_STOP=on \
+  ${TX_DB}
+
+psql_result="$?"
+let psql_result=psql_result+0
+
+#rm "${transaction_file}" &> /dev/null
+
+if [ $psql_result -eq 0 ]; then
+  exit 0
+else
+  exit 72
+fi

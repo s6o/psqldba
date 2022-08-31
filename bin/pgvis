@@ -1,0 +1,11 @@
+#!/bin/sh
+VIM="vim"
+
+which nvim &> /dev/null
+nvim_exists=`echo $?`
+
+if [[ nvim_exists -eq 0 ]]; then
+  VIM="nvim"
+fi
+
+PAGER="${VIM} -R u $HOME/.SpaceVim/vimrc -" psql -P "pager=always" $@
