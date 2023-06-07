@@ -6,6 +6,8 @@ nvim_exists=`echo $?`
 
 if [[ nvim_exists -eq 0 ]]; then
   VIM="nvim"
+  PAGER="${VIM} -R -" psql -P "pager=always" $@
+else
+  PAGER="${VIM} -R -u $HOME/.vimrc -" psql -P "pager=always" $@
 fi
 
-PAGER="${VIM} -R u $HOME/.vimrc -" psql -P "pager=always" $@

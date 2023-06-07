@@ -8,4 +8,4 @@ if [[ nvim_exists -eq 0 ]]; then
   VIM="nvim"
 fi
 
-PAGER="${VIM} -R u $HOME/.SpaceVim/vimrc -" psql -P "pager=always" $@
+PAGER="${VIM} -R -u $HOME/.SpaceVim/vimrc -" psql -P "pager=always" $@
