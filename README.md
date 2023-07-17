@@ -34,13 +34,13 @@ ln -s ~/psqldba/.psqlrc
 ## Neovim/VIM integration
 
 The [psql](https://www.postgresql.org/docs/current/app-psql.html) can use
-[VIM](https://github.com/vim/vim) or [NeoVIM](https://github.com/neovim/neovim)
+[Neovim](https://github.com/neovim/neovim) or [VIM](https://github.com/vim/vim)
 for editing via `\e` with the pre-requiste that the `EDITOR` and/or `VISUAL`
 environment variable has been set to the respective executable: `vim` or `nvim`
 (in `.bashrc`, `.zshrc` etc.).
 
 In addtion Neovim/VIM can be used as `PAGER` (i.e. command and/or query results
-are loaded into VIM). To make it easier to use a `psql` wrappers is provided:
+are loaded into VIM). To make it easier to use a `psql` wrapper is provided:
 
 ```zsh
 pgvim -U postgres
