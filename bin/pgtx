@@ -56,7 +56,7 @@ fi
 
 ###############################################################################
 
-transaction_file="${HOME}/psql-cfg/history/.pgtx"
+transaction_file="${HOME}/psqldba/history/.pgtx"
 
 echo "BEGIN;" > "${transaction_file}"
 echo "\i ${TX_SCRIPT}" >> "${transaction_file}"

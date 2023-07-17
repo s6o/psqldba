@@ -11,7 +11,7 @@
 \x auto
 
 \set VERBOSITY verbose
-\set HISTFILE ~/psql-cfg/history/.psql_history- :DBNAME
+\set HISTFILE ~/psqldba/history/.psql_history- :DBNAME
 \set HISTCONTROL ignoredups
 \set COMP_KEYWORD_CASE upper
 
