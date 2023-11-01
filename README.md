@@ -6,7 +6,7 @@ psql - PostgreSQL interactive terminal configuration and utilities
 
 ```zsh
 cd ~
-git clone git@github.com:s6o/psqldba.git
+git clone https://github.com/s6o/psqldba.git
 ```
 
 ### PATH
