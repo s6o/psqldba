@@ -77,6 +77,12 @@ psql -U postgres postgres
 \i ~/psqldba/sql/current-database-size.sql
 ```
 
+or
+
+```zsh
+psql -U postgres -d postgres -f ~/psqldba/sql/current-database-size.sql
+```
+
 resulting in (something like)
 
 ```text
@@ -101,6 +107,26 @@ resulting in (something like)
 * table-insert-update-delete-statistics.sql
 * table-sizes.sql
 * transaction-ages.sql
+
+## Adding/removing pre-defined functions
+
+```zsh
+psql -U postgres postgres
+\i ~/psqldba/functions/create-psqldba-bytea-reverse.sql
+\i ~/psqldba/functions/drop-psqldba-bytea-reverse.sql
+```
+
+or
+
+```zsh
+psql -U postgres -p 7432 -d postgres -f ~/psqldba/functions/create-psqldba-bytea-reverse.sql
+psql -U postgres -p 7432 -d postgres -f ~/psqldba/functions/drop-psqldba-bytea-reverse.sql
+```
+
+### Pre-defined functions
+
+* psqldba_reverse_bytea(bytea)
+* psqldba_bytea_to_double(bytea, text)
 
 ## Testing (dry-run) database changes
 
