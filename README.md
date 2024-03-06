@@ -86,6 +86,22 @@ resulting in (something like)
 (1 row)
 ```
 
+### Pre-defined Queries
+
+* connection-count-by-state.sql
+* connections-waiting-for-lock.sql
+* current-database-size.sql
+* index-cache-usage.sql
+* index-sizes-and-health.sql
+* indexes-rearly-used.sql
+* queries-active-and-waiting.sql
+* table-and-index-sizes.sql
+* table-cache-usage.sql
+* table-index-usage.sql
+* table-insert-update-delete-statistics.sql
+* table-sizes.sql
+* transaction-ages.sql
+
 ## Testing (dry-run) database changes
 
 The `psqldba` comes with `pgtx` [psql](https://www.postgresql.org/docs/current/app-psql.html)
