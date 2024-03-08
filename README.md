@@ -119,8 +119,8 @@ psql -U postgres postgres
 or
 
 ```zsh
-psql -U postgres -p 7432 -d postgres -f ~/psqldba/functions/create-psqldba-bytea-reverse.sql
-psql -U postgres -p 7432 -d postgres -f ~/psqldba/functions/drop-psqldba-bytea-reverse.sql
+psql -U postgres -d postgres -f ~/psqldba/functions/create-psqldba-bytea-reverse.sql
+psql -U postgres -d postgres -f ~/psqldba/functions/drop-psqldba-bytea-reverse.sql
 ```
 
 ### Pre-defined functions
