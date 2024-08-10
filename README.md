@@ -67,6 +67,15 @@ configuration in you exsiting `.inputrc` by appending the line:
 $include ~/psqldba/.psql-vi-mode
 ```
 
+### Basic defaults for VIM
+
+For VIM a very basic configuration is provided and can be activated via symlink:
+
+```zsh
+cd ~ 
+ln -s ~/psqldba/.vimrc
+```
+
 ## Using pre-defined SQL queries
 
 The `psqldba` comes with a few pre-defined SQL queries that can be executed in
