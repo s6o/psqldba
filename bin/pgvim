@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 VIM="vim"
 
 which nvim &> /dev/null
