@@ -5,8 +5,7 @@ psql - PostgreSQL interactive terminal configuration and utilities
 ## Install
 
 ```zsh
-cd ~
-git clone https://github.com/s6o/psqldba.git
+cd ~ && git clone https://github.com/s6o/psqldba.git
 ```
 
 ### PATH
@@ -27,8 +26,7 @@ command history stored in `~/psqldba`) symlink `~/psqldba/.psqlrc` to `$HOME`
 directory:
 
 ```zsh
-cd ~
-ln -s ~/psqldba/.psqlrc
+cd ~ && ln -s ~/psqldba/.psqlrc
 ```
 
 ## Neovim/VIM integration
@@ -56,8 +54,7 @@ To get `vi` edit mode support on `psql` prompt symlink `~/psqldba/.inputrc` to
 your `$HOME` directory:
 
 ```zsh
-cd ~ 
-ln -s ~/psqldba/.inputrc
+cd ~ && ln -s ~/psqldba/.inputrc
 ```
 
 or when you already have an existing `.inputrc` you can include the respective
@@ -72,8 +69,7 @@ $include ~/psqldba/.psql-vi-mode
 For VIM a very basic configuration is provided and can be activated via symlink:
 
 ```zsh
-cd ~ 
-ln -s ~/psqldba/.vimrc
+cd ~ && ln -s ~/psqldba/.vimrc
 ```
 
 ## Using pre-defined SQL queries
