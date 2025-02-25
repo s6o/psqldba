@@ -10,10 +10,20 @@ cd ~ && git clone https://github.com/s6o/psqldba.git
 
 ### PATH
 
-Update your PATH environment variable (in `.bashrc`, `.zshrc` etc.) and include
-the `$HOME/psqldba/bin` directory in PATH.
+Update your PATH environment variable (in `.bashrc`, `.zshrc` etc.):
+
+```zsh
+export PATH="$HOME/psqldba/bin:$PATH"
+```
 
 **Don't forget to source (re-load) your changes.**
+
+```bash
+source ~/.bashrc
+```
+
+or
+
 
 ```zsh
 source ~/.zshrc
@@ -79,6 +89,12 @@ The `psqldba` comes with a few pre-defined SQL queries that can be executed in
 
 ```zsh
 psql -U postgres postgres
+```
+
+then
+
+
+```zsh
 \i ~/psqldba/sql/current-database-size.sql
 ```
 
