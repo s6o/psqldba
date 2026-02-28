@@ -1,0 +1,29 @@
+{
+  "$schema": "https://pg-language-server.com/latest/schema.json",
+  "db": {
+    "host": "127.0.0.1",
+    "port": 5432,
+    "username": "postgres",
+    "password": "postgres",
+    "database": "postgres",
+    "connTimeoutSecs": 10,
+    "allowStatementExecutionsAgainst": ["127.0.0.1/*", "localhost/*"]
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true
+    }
+  },
+  "typecheck": {
+    "enabled": true
+  },
+  "plpgsqlCheck": {
+    "enabled": true
+  },
+  "format": {
+    "enabled": true,
+    "keywordCase": "lower"
+  }
+}
+
