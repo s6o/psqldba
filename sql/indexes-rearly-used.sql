@@ -13,7 +13,7 @@ SELECT
 , indexdef AS definition
 FROM pg_stat_user_indexes AS idstat JOIN pg_indexes ON indexrelname = indexname
 JOIN pg_stat_user_tables AS tabstat ON idstat.relname = tabstat.relname
-WHERE 
+WHERE
   idstat.idx_scan < 200
   AND indexdef !~* 'unique'
 ORDER BY
